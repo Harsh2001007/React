@@ -5,8 +5,8 @@ import CoreConcept from "./components/CoreConcept.jsx";
 import TabButton from "./components/TabButton.jsx";
 
 function App() {
-  function eventhandler() {
-    console.log("bye world");
+  function eventhandler(params) {
+    console.log("clicked button is ->", params);
   }
   return (
     <div>
@@ -40,10 +40,34 @@ function App() {
         <section id="examples">
           <h2>Examples</h2>
           <menu>
-            <TabButton method={eventhandler}>Components</TabButton>
-            <TabButton>JSX</TabButton>
-            <TabButton>Props</TabButton>
-            <TabButton>State</TabButton>
+            <TabButton
+              method={() => {
+                eventhandler("Components");
+              }}
+            >
+              Components
+            </TabButton>
+            <TabButton
+              method={() => {
+                eventhandler("JSX");
+              }}
+            >
+              JSX
+            </TabButton>
+            <TabButton
+              method={() => {
+                eventhandler("Props");
+              }}
+            >
+              Props
+            </TabButton>
+            <TabButton
+              method={() => {
+                eventhandler("State");
+              }}
+            >
+              State
+            </TabButton>
           </menu>
         </section>
       </main>
