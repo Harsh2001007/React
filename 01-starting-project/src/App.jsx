@@ -7,7 +7,7 @@ import { useState } from "react";
 import { EXAMPLES } from "./dataExamples.js";
 
 function App() {
-  const [selectedTopic, setSelectedTopic] = useState("components");
+  const [selectedTopic, setSelectedTopic] = useState();
   function eventhandler(params) {
     setSelectedTopic(params);
     console.log(selectedTopic);
@@ -45,6 +45,7 @@ function App() {
           <h2>Examples</h2>
           <menu>
             <TabButton
+              isSelected={selectedTopic === "components"}
               method={() => {
                 eventhandler("components");
               }}
@@ -55,6 +56,7 @@ function App() {
               method={() => {
                 eventhandler("jsx");
               }}
+              isSelected={selectedTopic === "jsx"}
             >
               JSX
             </TabButton>
@@ -62,6 +64,7 @@ function App() {
               method={() => {
                 eventhandler("props");
               }}
+              isSelected={selectedTopic === "props"}
             >
               Props
             </TabButton>
@@ -69,17 +72,22 @@ function App() {
               method={() => {
                 eventhandler("state");
               }}
+              isSelected={selectedTopic === "state"}
             >
               State
             </TabButton>
           </menu>
-          <div id="tab-content">
-            <h3>{EXAMPLES[selectedTopic].title}</h3>
-            <p>{EXAMPLES[selectedTopic].description}</p>
-            <pre>
-              <code>{EXAMPLES[selectedTopic].code}</code>
-            </pre>
-          </div>
+          {!selectedTopic ? (
+            <p>Please select a topic.</p>
+          ) : (
+            <div id="tab-content">
+              <h3>{EXAMPLES[selectedTopic].title}</h3>
+              <p>{EXAMPLES[selectedTopic].description}</p>
+              <pre>
+                <code>{EXAMPLES[selectedTopic].code}</code>
+              </pre>
+            </div>
+          )}
         </section>
       </main>
     </div>
