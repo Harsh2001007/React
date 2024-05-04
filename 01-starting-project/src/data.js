@@ -28,4 +28,10 @@ export const CORE_CONCEPTS = [
     description:
       "React-managed data which, when changed, causes the component to re-render & the UI to update.",
   },
+  {
+    image: componentsImg,
+    title: "Components",
+    description:
+      "The core UI building block - compose the user interface by combining multiple components.",
+  },
 ];
