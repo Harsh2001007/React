@@ -1,4 +1,5 @@
 import CoreConcepts from "./components/CoreConcepts";
+import Examples from "./components/Examples";
 import Header from "./components/Header";
 import { CORE_CONCEPTS } from "./data";
 
@@ -15,6 +16,12 @@ function App() {
             <CoreConcepts {...CORE_CONCEPTS[2]} />
             <CoreConcepts {...CORE_CONCEPTS[3]} />
           </ul>
+        </section>
+        <section id="examples">
+          <h2>Examples</h2>
+          <menu>
+            <Examples>Components</Examples>
+          </menu>
         </section>
       </main>
     </div>
