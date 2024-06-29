@@ -1,13 +1,7 @@
-import AuthInputs from './components/AuthInputs.jsx';
-import Header from './components/Header.jsx';
-
-export default function App() {
+function App() {
   return (
-    <>
-      <Header />
-      <main>
-        <AuthInputs />
-      </main>
-    </>
-  );
+    <h1>React Investment Calculator</h1>
+  )
 }
+
+export default App
