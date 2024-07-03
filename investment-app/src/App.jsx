@@ -2,6 +2,7 @@ import { useState } from "react";
 import Header from "./components/Header.jsx";
 import UserInput from "./components/UserInput.jsx";
 import Result from "./components/Result.jsx";
+import { Chart } from "react-google-charts";
 
 function App() {
   const [userInput, setUserInput] = useState({
