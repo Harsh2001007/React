@@ -32,7 +32,7 @@ export default function NewProject({ onAdd, cancelHandler }) {
     <>
       <Modal ref={modal} btnTitle={"Okay"}>
         <h2 className="mb-8 font-bold uppercase md:text-xl text-stone-700">
-          Invalid Inputs
+          Invalid Input
         </h2>
         <p className="text-stone-600 mb-4">
           Oops ... look like you forget to enter a value.
