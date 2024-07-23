@@ -1,14 +1,19 @@
 import { useState } from "react";
+import ButtonComp from "./ButtonComp";
+import ResetButton from "./ResetButton";
 
 export default function MemberTaskStrip() {
   const [memberSelect, setMemberSelect] = useState("");
   const [statusSelect, setStatusSelect] = useState("");
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [comment, setComment] = useState("");
 
   const memberObj = [
-    { label: "Rishabh", value: "Rishabh" },
-    { label: "Sandeep", value: "Sandeep" },
-    { label: "Shivam", value: "Shivam" },
-    { label: "Harsh", value: "Harsh" },
+    { label: "Rishabh Pandey", value: "Rishabh Pandey" },
+    { label: "Sandeep Singh", value: "Sandeep Singh" },
+    { label: "Shivam Mishra", value: "Shivam Mishra" },
+    { label: "Harsh Sachan", value: "Harsh Sachan" },
   ];
 
   const statusObj = [
@@ -24,6 +29,35 @@ export default function MemberTaskStrip() {
 
   function handleStatusSelect(event) {
     setStatusSelect(event.target.value);
+  }
+
+  function handleReset() {
+    setMemberSelect("");
+    setStatusSelect("");
+    setTitle("");
+    setDescription("");
+    setComment("");
+    console.log("values reset");
+  }
+
+  function titleHandler(event) {
+    setTitle(event.target.value);
+  }
+  function descriptionHandler(event) {
+    setDescription(event.target.value);
+  }
+  function commentHandler(event) {
+    setComment(event.target.value);
+  }
+
+  function submitHandler() {
+    console.log({
+      member: memberSelect,
+      status: statusSelect,
+      title: title,
+      desc: description,
+      comment: comment,
+    });
   }
 
   const today = new Date();
@@ -42,24 +76,65 @@ export default function MemberTaskStrip() {
           </p>
         </div>
         <div className="taskBottom">
-          <select className="select" onChange={handleMemberSelect}>
-            <option value="" selected disabled>
-              Select Team Member
-            </option>
-            {memberObj.map((option) => (
-              <option value={option.value}>{option.label}</option>
-            ))}
-          </select>
-          <select className="select" onChange={handleStatusSelect}>
-            <option value="" disabled selected hidden>
-              Select Task Status
-            </option>
-            {statusObj.map((status) => (
-              <option value={status.value}>{status.label}</option>
-            ))}
-          </select>
-          <p>{memberSelect}</p>
-          <p>{statusSelect}</p>
+          <div className="dropContainer">
+            <select
+              className="select"
+              onChange={handleMemberSelect}
+              value={memberSelect}
+            >
+              <option value="" disabled selected>
+                Select Team Member
+              </option>
+              {memberObj.map((option) => (
+                <option value={option.value}>{option.label}</option>
+              ))}
+            </select>
+            <select
+              className="select"
+              onChange={handleStatusSelect}
+              value={statusSelect}
+            >
+              <option value="" disabled selected>
+                Select Task Status
+              </option>
+              {statusObj.map((status) => (
+                <option value={status.value}>{status.label}</option>
+              ))}
+            </select>
+          </div>
+          <div className="inputsContainer">
+            <div className="leftPannel">
+              <div>
+                <p>Title</p>
+                <input
+                  type="text"
+                  className="inputField"
+                  onChange={titleHandler}
+                  value={title}
+                />
+              </div>
+              <div>
+                <p>Description</p>
+                <textarea
+                  className="textareaField"
+                  onChange={descriptionHandler}
+                  value={description}
+                ></textarea>
+              </div>
+              <div>
+                <p>Comment</p>
+                <textarea
+                  className="textareaField"
+                  onChange={commentHandler}
+                  value={comment}
+                ></textarea>
+              </div>
+            </div>
+            <div className="rightPannel">
+              <ButtonComp btnText={"Submit"} method={submitHandler} />
+              <ResetButton btnText={"Clear"} resetMethod={handleReset} />
+            </div>
+          </div>
         </div>
       </div>
     </>

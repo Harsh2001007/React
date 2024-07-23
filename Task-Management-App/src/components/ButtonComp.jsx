@@ -1,3 +1,7 @@
-export default function ButtonComp({ btnText }) {
-  return <button className="createButton">{btnText}</button>;
+export default function ButtonComp({ btnText, method }) {
+  return (
+    <button className="createButton" onClick={method}>
+      {btnText}
+    </button>
+  );
 }
