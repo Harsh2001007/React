@@ -50,15 +50,34 @@ export default function MemberTaskStrip() {
     setComment(event.target.value);
   }
 
-  function submitHandler() {
-    console.log({
-      member: memberSelect,
-      status: statusSelect,
+  const handleSubmit = async () => {
+    const data = {
+      description: description,
       title: title,
-      desc: description,
-      comment: comment,
-    });
-  }
+      date_time: "2024-07-25T18:18:38",
+      status: "DONE",
+    };
+
+    try {
+      const response = await fetch("http://15.207.240.41:8080/TaskManager/", {
+        method: "POST",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        const responseData = await response.json();
+        console.log("Success:", responseData);
+      } else {
+        console.error("Error:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
 
   const today = new Date();
   const options = { year: "numeric", month: "long", day: "numeric" };
@@ -131,7 +150,7 @@ export default function MemberTaskStrip() {
               </div>
             </div>
             <div className="rightPannel">
-              <ButtonComp btnText={"Submit"} method={submitHandler} />
+              <ButtonComp btnText={"Submit"} method={handleSubmit} />
               <ResetButton btnText={"Clear"} resetMethod={handleReset} />
             </div>
           </div>
