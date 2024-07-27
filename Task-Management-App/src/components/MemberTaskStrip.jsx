@@ -8,6 +8,7 @@ export default function MemberTaskStrip() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [comment, setComment] = useState("");
+  const [gdata, setGData] = useState("");
 
   const memberObj = [
     { label: "Rishabh Pandey", value: "Rishabh Pandey" },
@@ -51,33 +52,45 @@ export default function MemberTaskStrip() {
   }
 
   const handleSubmit = async () => {
-    const data = {
-      description: description,
-      title: title,
-      date_time: "2024-07-25T18:18:38",
-      status: "DONE",
-    };
+    const formData = new FormData();
+    formData.append("description", description);
+    formData.append("title", title);
+    formData.append("assignee", memberSelect);
 
     try {
-      const response = await fetch("http://15.207.240.41:8080/TaskManager/", {
+      const response = await fetch("http://15.207.240.41:8080/api/tasks", {
         method: "POST",
-        mode: "cors",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
+        mode: "no-cors",
+        body: formData,
       });
 
-      if (response.ok) {
-        const responseData = await response.json();
-        console.log("Success:", responseData);
-      } else {
-        console.error("Error:", response.statusText);
-      }
+      // You won't be able to access response data due to no-cors mode
+      console.log("Request sent");
     } catch (error) {
       console.error("Error:", error);
     }
   };
+
+  // const handleSubmit = () => {
+  //   console.log("bye");
+  // };
+
+  // let p = fetch("http://15.207.240.41:8080/api/tasks")
+  //   .then((response) => {
+  //     if (!response.ok) {
+  //       throw new Error("Network response was not ok " + response.statusText);
+  //     }
+  //     return response.json();
+  //   })
+  //   .then((data) => {
+  //     console.log(data);
+  //   })
+  //   .catch((error) => {
+  //     console.error(
+  //       "There has been a problem with your fetch operation:",
+  //       error
+  //     );
+  //   });
 
   const today = new Date();
   const options = { year: "numeric", month: "long", day: "numeric" };
@@ -152,6 +165,7 @@ export default function MemberTaskStrip() {
             <div className="rightPannel">
               <ButtonComp btnText={"Submit"} method={handleSubmit} />
               <ResetButton btnText={"Clear"} resetMethod={handleReset} />
+              <p>{gdata}</p>
             </div>
           </div>
         </div>

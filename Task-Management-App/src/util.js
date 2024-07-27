@@ -65,3 +65,19 @@ const handleSubmit = async () => {
     date_time: "2024-07-25T18:18:38",
     status: "DONE",
   }
+
+
+
+  fetch(apiUrl)
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok ' + response.statusText);
+    }
+    return response.json();
+  })
+  .then(data => {
+    console.log(data);
+  })
+  .catch(error => {
+    console.error('There has been a problem with your fetch operation:', error);
+  });
