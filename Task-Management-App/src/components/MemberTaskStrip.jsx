@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ButtonComp from "./ButtonComp";
 import ResetButton from "./ResetButton";
+import axios from "axios";
 
 export default function MemberTaskStrip() {
   const [memberSelect, setMemberSelect] = useState("");
@@ -51,47 +52,23 @@ export default function MemberTaskStrip() {
     setComment(event.target.value);
   }
 
-  const handleSubmit = async () => {
-    const formData = new FormData();
-    formData.append("description", description);
-    formData.append("title", title);
-    formData.append("assignee", memberSelect);
-
-    try {
-      const response = await fetch("http://15.207.240.41:8080/api/tasks", {
-        method: "POST",
-        mode: "no-cors",
-        body: formData,
-      });
-
-      // You won't be able to access response data due to no-cors mode
-      console.log("Request sent");
-    } catch (error) {
-      console.error("Error:", error);
-    }
+  const handleSubmit = () => {
+    axios.post(
+      "http://15.207.240.41:8080/api/tasks",
+      {
+        description: description,
+        title: title,
+        assignee: memberSelect,
+      },
+      {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          Accept: "application/json",
+          "Content-Type": "application/json;charset=UTF-8",
+        },
+      }
+    );
   };
-
-  // const handleSubmit = () => {
-  //   console.log("bye");
-  // };
-
-  // let p = fetch("http://15.207.240.41:8080/api/tasks")
-  //   .then((response) => {
-  //     if (!response.ok) {
-  //       throw new Error("Network response was not ok " + response.statusText);
-  //     }
-  //     return response.json();
-  //   })
-  //   .then((data) => {
-  //     console.log(data);
-  //   })
-  //   .catch((error) => {
-  //     console.error(
-  //       "There has been a problem with your fetch operation:",
-  //       error
-  //     );
-  //   });
-
   const today = new Date();
   const options = { year: "numeric", month: "long", day: "numeric" };
   const formattedDate = today.toLocaleDateString(undefined, options);
