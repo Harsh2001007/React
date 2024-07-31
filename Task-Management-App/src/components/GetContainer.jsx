@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import TicketStrip from "./TicketStrip";
 import EditModal from "./EditModal";
+import GetTableHeader from "./GetTableHeader";
 
 export default function GetContainer() {
   const [data, setData] = useState([]);
@@ -47,13 +48,14 @@ export default function GetContainer() {
   if (error) return <p>Error: {error}</p>;
 
   return (
-    <div className="taskContainer">
+    <div className="TicketMainContainer">
+      <GetTableHeader />
       {data.map((item) => (
         <TicketStrip
           key={item.creationTime}
           assigneeName={item.assignee}
           status={item.status}
-          createdDate={item.creationTime}
+          createdDate={new Date(item.creationTime).toLocaleDateString()}
           ticketTitle={item.title}
           onEdit={() => handleEditClick(item)}
         />

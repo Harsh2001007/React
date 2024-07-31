@@ -9,18 +9,11 @@ export default function TicketStrip({
   onEdit,
 }) {
   return (
-    <div className="TicketStripContainer" key={key}>
-      <div className="upperDiv">
-        <div className="assigneeDiv">{assigneeName}</div>
-        <div className="dateDiv">{createdDate}</div>
-        <div className="statusDiv">{status}</div>
-        <div>
-          <button className="editButton" onClick={onEdit}>
-            Edit
-          </button>
-        </div>
-      </div>
-      <div className="lowerDiv">{ticketTitle}</div>
+    <div className="TicketStripContainer">
+      <div className="apiTitle">{ticketTitle}</div>
+      <div className="apiAssignee">{assigneeName}</div>
+      <div className="apiDate">{createdDate}</div>
+      <div className="apiStatus">{status}</div>
     </div>
   );
 }
