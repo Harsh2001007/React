@@ -9,7 +9,7 @@ export default function TicketStrip({
   onEdit,
 }) {
   return (
-    <div className="TicketStripContainer">
+    <div className="TicketStripContainer" onClick={onEdit}>
       <div className="apiTitle">{ticketTitle}</div>
       <div className="apiAssignee">{assigneeName}</div>
       <div className="apiDate">{createdDate}</div>

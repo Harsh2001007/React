@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
 
 * {
   margin: 0;
@@ -11,14 +12,14 @@
 body {
   margin: 0;
   height: 100vh;
-  background: #c7d1d9;
+  background: linear-gradient(to right, #0b0a23, #16183c);
   color: white;
   display: flex;
-  font-family: "Rubik";
+  font-family: "Noto Sans";
 }
 
 .sidebarContainer {
-  background-color: white;
+  background-color: #1e284c;
   height: 90%;
   width: 20vw;
   margin-left: 3%;
@@ -65,7 +66,7 @@ body {
 }
 
 .taskContainer {
-  background-color: #c7d1d9;
+  background-color: #1e284c;
   height: 90%;
   width: 70vw;
   margin-top: 2%;
@@ -78,6 +79,7 @@ body {
   align-items: center;
   padding-top: 10px;
   padding-bottom: 10px;
+  border: 2px solid blueviolet;
 }
 
 .main-Container {
@@ -192,7 +194,7 @@ body {
   height: 100%;
   overflow: auto;
   background-color: rgb(0, 0, 0);
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.7);
   justify-content: center;
   align-items: center;
   color: black;
@@ -204,6 +206,25 @@ body {
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
+  height: 50%;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+.modalHeader {
+  display: flex;
+  flex-direction: row;
+}
+.editText {
+  width: 80%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.closeIcon {
+  width: 20%;
 }
 
 .close {
@@ -265,13 +286,51 @@ body {
 }
 
 .TicketStripContainer {
-  border: 2px solid red;
   width: 90%;
   border-radius: 6px;
-  border: 1px solid white;
   outline: none;
   color: white;
   height: 7%;
   display: flex;
   align-items: center;
+  padding: 0 5px;
+  background-color: #1e284c;
+}
+
+.TicketStripContainer:hover {
+  background-color: #7b5feb;
+  cursor: pointer;
+}
+
+.apiTitle {
+  width: 50%;
+}
+.apiAssignee {
+  width: 20%;
+}
+.apiDate {
+  width: 20%;
+}
+.apiStatus {
+  width: 10%;
+}
+
+.modalAssignee {
+  display: flex;
+  width: 50%;
+}
+
+.modalAssigneLabel {
+}
+.modalAssigneeDrop {
+  width: 50%;
+}
+
+.modalAssigneeDrop select {
+  width: 100%;
+}
+
+.modalInput {
+  width: 300%;
+  height: 100%;
 }
