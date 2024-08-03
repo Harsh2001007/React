@@ -11,8 +11,16 @@ export default function SideBar({ setScreen }) {
   return (
     <>
       <div className="sidebarContainer">
-        <ButtonComp btnText={"+ Create"} method={handlePostDataClick} />
-        <ButtonComp btnText={"Get Data"} method={handleGetDataClick} />
+        <ButtonComp btnText={"Create"} method={handlePostDataClick}>
+          <div className="btnIconDiv">
+            <i class="fa-solid fa-plus"></i>
+          </div>
+        </ButtonComp>
+        <ButtonComp btnText={"Tickets"} method={handleGetDataClick}>
+          <div className="btnIconDiv">
+            <i class="fa-solid fa-ticket"></i>
+          </div>
+        </ButtonComp>
       </div>
     </>
   );
