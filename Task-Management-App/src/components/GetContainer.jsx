@@ -13,26 +13,27 @@ export default function GetContainer() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editData, setEditData] = useState(null);
   const [filterState, setFilterState] = useState(true);
+  const [selectedMember, setSelectedMember] = useState("");
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     setLoading(true);
-  //     try {
-  //       const endpoint = filterState
-  //         ? "http://15.207.240.41:8080/api/tasks"
-  //         : "http://15.207.240.41:8080/api/tasks?Rishabh%20pandey";
-  //       const response = await axios.get(endpoint);
-  //       // Ensure response data is correctly structured
-  //       setData(response.data.data || []);
-  //     } catch (error) {
-  //       setError(error.message);
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   };
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        const endpoint = filterState
+          ? "http://15.207.240.41:8080/api/tasks"
+          : `http://15.207.240.41:8080/api/tasks?assignee=${selectedMember}`;
+        const response = await axios.get(endpoint);
+        // Ensure response data is correctly structured
+        setData(response.data.data || []);
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  //   fetchData();
-  // }, [filterState]);
+    fetchData();
+  }, [filterState]);
 
   const handleEditClick = (item) => {
     setEditData(item);
@@ -48,27 +49,44 @@ export default function GetContainer() {
       item.creationTime === updatedData.creationTime ? updatedData : item
     );
     setData(updatedItems);
-    setIsModalOpen(false); // Close the modal after saving
+    setIsModalOpen(false);
   };
 
   function handleApply() {
-    setFilterState(false);
+    setFilterState(!filterState);
   }
 
   function handleReset() {
     setFilterState(true);
   }
 
+  function filteredMemberValue(member) {
+    setSelectedMember(member);
+  }
+
   console.log(filterState);
 
-  // if (loading) return <p>Loading...</p>;
-  // if (error) return <p>Error: {error}</p>;
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error}</p>;
+
+  console.log(selectedMember);
 
   return (
     <div className="TicketMainContainer">
-      <FilterBar onMethodApply={handleApply} onMethodReset={handleReset} />
+      <FilterBar
+        onMethodApply={handleApply}
+        onMemberValue={filteredMemberValue}
+        filterBtnText={filterState ? "Apply" : "Reset"}
+        icon={
+          filterState ? (
+            <i class="fa-solid fa-circle-check"></i>
+          ) : (
+            <i class="fa-solid fa-circle-xmark"></i>
+          )
+        }
+      />
       <GetTableHeader />
-      {/* {data.map((item) => (
+      {data.map((item) => (
         <TicketStrip
           key={item.creationTime}
           assigneeName={item.assignee}
@@ -77,7 +95,7 @@ export default function GetContainer() {
           ticketTitle={item.title}
           onEdit={() => handleEditClick(item)}
         />
-      ))} */}
+      ))}
       <EditModal
         isOpen={isModalOpen}
         onClose={handleCloseModal}

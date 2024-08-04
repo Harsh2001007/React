@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 export default function EditModal({ isOpen, onClose, data, onSave }) {
   const [formData, setFormData] = useState({});
@@ -46,9 +47,30 @@ export default function EditModal({ isOpen, onClose, data, onSave }) {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSave = () => {
-    onSave(formData);
-    onClose();
+  const handleSave = async () => {
+    try {
+      await axios.put(
+        `http://15.207.240.41:8080/api/tasks/${formData.id}`,
+        {
+          description: formData.description,
+          title: formData.title,
+          assignee: formData.assignee,
+          status: formData.status,
+        },
+        {
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            Accept: "application/json",
+            "Content-Type": "application/json;charset=UTF-8",
+          },
+        }
+      );
+      console.log("Data updated successfully");
+      onSave(formData);
+      onClose();
+    } catch (error) {
+      console.error("Error updating data:", error);
+    }
   };
 
   return (
@@ -131,6 +153,15 @@ export default function EditModal({ isOpen, onClose, data, onSave }) {
             type="text"
             name="description"
             value={formData.description || ""}
+            onChange={handleChange}
+          />
+        </label>
+        <label>
+          Ticket ID:
+          <textarea
+            type="text"
+            name="id"
+            value={formData.id || ""}
             onChange={handleChange}
           />
         </label>

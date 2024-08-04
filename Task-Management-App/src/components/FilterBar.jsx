@@ -1,11 +1,12 @@
 import React from "react";
 import { useState } from "react";
 
-function FilterBar({ onMethodApply, onMethodReset }) {
+function FilterBar({ onMethodApply, onMemberValue, filterBtnText, icon }) {
   const [memberSelect, setMemberSelect] = useState("");
 
   function handleMemberSelect(event) {
     setMemberSelect(event.target.value);
+    onMemberValue(event.target.value);
   }
 
   const memberObj = [
@@ -35,9 +36,12 @@ function FilterBar({ onMethodApply, onMethodReset }) {
           </select>
         </p>
       </div>
-      <div>
-        <button onClick={onMethodApply}>Apply</button>
-        <button onClick={onMethodReset}>Reset</button>
+      <div className="filterBtnDiv">
+        <button onClick={onMethodApply} className="filterBtn">
+          {filterBtnText}
+          {icon}
+        </button>
+        {/* <button onClick={onMethodReset}>Reset</button> */}
       </div>
     </div>
   );

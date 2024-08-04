@@ -259,7 +259,6 @@ body {
 
 .tableHeader {
   width: 90%;
-  border: 2px solid red;
   display: flex;
   height: 7%;
   justify-content: center;
@@ -267,10 +266,12 @@ body {
   background-color: #252d5a;
   padding: 0 5px;
   border-radius: 8px;
+  padding: 8px 0px;
 }
 
 .tableHeaderTitleDiv {
   width: 50%;
+  margin-left: 10px;
 }
 
 .tableHeaderAssigneeDiv {
@@ -349,4 +350,24 @@ body {
 
 .btnIconDiv {
   margin-right: 8px;
+}
+
+.filterBtnDiv {
+  height: 100%;
+  margin-left: 20px;
+}
+
+.filterBtn {
+  height: 100%;
+  border: none;
+  outline: none;
+  padding: 0px 20px;
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to right, #7b4397, #dc2430);
+  font-size: 14px;
+  color: white;
+  border-radius: 6px;
 }
