@@ -98,7 +98,7 @@ export default function MemberTaskStrip() {
                 <option value={option.value}>{option.label}</option>
               ))}
             </select>
-            <select
+            {/* <select
               className="select"
               onChange={handleStatusSelect}
               value={statusSelect}
@@ -109,7 +109,7 @@ export default function MemberTaskStrip() {
               {statusObj.map((status) => (
                 <option value={status.value}>{status.label}</option>
               ))}
-            </select>
+            </select> */}
           </div>
           <div className="inputsContainer">
             <div className="leftPannel">
@@ -130,14 +130,14 @@ export default function MemberTaskStrip() {
                   value={description}
                 ></textarea>
               </div>
-              <div>
-                <p>Comment</p>
+              {/* <div>
+                <p>Descripiton</p>
                 <textarea
                   className="textareaField"
                   onChange={commentHandler}
                   value={comment}
                 ></textarea>
-              </div>
+              </div> */}
             </div>
             <div className="rightPannel">
               <ButtonComp btnText={"Submit"} method={handleSubmit} />

@@ -50,7 +50,7 @@ export default function EditModal({ isOpen, onClose, data, onSave }) {
   const handleSave = async () => {
     try {
       await axios.put(
-        `http://15.207.240.41:8080/api/tasks/${formData.id}`,
+        `http://15.207.240.41:8080/api/tasks/update/task?taskId=${formData.id}`,
         {
           description: formData.description,
           title: formData.title,
@@ -70,6 +70,7 @@ export default function EditModal({ isOpen, onClose, data, onSave }) {
       onClose();
     } catch (error) {
       console.error("Error updating data:", error);
+      onClose();
     }
   };
 
@@ -91,7 +92,7 @@ export default function EditModal({ isOpen, onClose, data, onSave }) {
           <div className="modalAssigneLabel">
             <p>Assignee Name:</p>
           </div>
-          <div className="modalAssigneeDrop">
+          <div className="modalValueFields">
             <select
               className="select"
               name="assignee"
@@ -114,7 +115,7 @@ export default function EditModal({ isOpen, onClose, data, onSave }) {
           <div className="modalAssigneLabel">
             <p>Status:</p>
           </div>
-          <div className="modalAssigneeDrop">
+          <div className="modalValueFields">
             <select
               className="select"
               name="status"
@@ -137,7 +138,7 @@ export default function EditModal({ isOpen, onClose, data, onSave }) {
           <div className="modalAssigneLabel">
             <p>Ticket Title:</p>
           </div>
-          <div>
+          <div className="modalValueFields">
             <input
               className="modalInput"
               type="text"
@@ -147,25 +148,32 @@ export default function EditModal({ isOpen, onClose, data, onSave }) {
             />
           </div>
         </div>
-        <label>
-          Ticket Description:
-          <textarea
-            type="text"
-            name="description"
-            value={formData.description || ""}
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          Ticket ID:
-          <textarea
-            type="text"
-            name="id"
-            value={formData.id || ""}
-            onChange={handleChange}
-          />
-        </label>
-        <button onClick={handleSave}>Save</button>
+
+        <div className="modalAssignee">
+          <div className="modalAssigneLabel">
+            <p> Ticket Description:</p>
+          </div>
+          <div className="modalValueFieldsDesc">
+            <textarea
+              type="text"
+              name="description"
+              value={formData.description || ""}
+              onChange={handleChange}
+            />
+          </div>
+        </div>
+
+        <div className="modalAssignee">
+          <div className="modalAssigneLabel">
+            <p> Ticket ID:</p>
+          </div>
+          <div className="modalValueFields">{formData.id}</div>
+        </div>
+        <div className="saveBtnDiv">
+          <button className="saveBtn" onClick={handleSave}>
+            Update Data
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -371,3 +371,50 @@ body {
   color: white;
   border-radius: 6px;
 }
+
+.saveBtnDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.saveBtn {
+  background-color: black;
+  color: white;
+  padding: 4px 10px;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.saveBtn:hover {
+  background-color: white;
+  color: black;
+  transition: all 0.3s ease-in;
+  border: 1px solid black;
+  padding: 4px 10px;
+  outline: none;
+  border-radius: 4px;
+}
+
+.modalAssigneLabel {
+  width: 30%;
+  margin-top: 18px;
+}
+
+.modalValueFields {
+  width: 40%;
+  margin-top: 18px;
+}
+.modalValueFields select {
+  width: 100%;
+}
+.modalValueFieldsDesc textarea {
+  width: 100%;
+}
+.modalValueFieldsDesc {
+  width: 40%;
+  margin-top: 18px;
+}

@@ -14,6 +14,7 @@ export default function GetContainer() {
   const [editData, setEditData] = useState(null);
   const [filterState, setFilterState] = useState(true);
   const [selectedMember, setSelectedMember] = useState("");
+  const [DateFromChild, setDateFromChild] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -64,12 +65,29 @@ export default function GetContainer() {
     setSelectedMember(member);
   }
 
+  function filterDateValue(dates) {
+    setDateFromChild(dates);
+  }
+
   console.log(filterState);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
 
   console.log(selectedMember);
+  console.log(DateFromChild);
+
+  let isoDateStr = "";
+  if (DateFromChild) {
+    const dateObj = new Date(DateFromChild);
+    if (!isNaN(dateObj)) {
+      isoDateStr = dateObj.toISOString().split("T")[0];
+    } else {
+      console.error("Invalid date format");
+    }
+  }
+
+  console.log(isoDateStr);
 
   return (
     <div className="TicketMainContainer">
@@ -84,6 +102,7 @@ export default function GetContainer() {
             <i class="fa-solid fa-circle-xmark"></i>
           )
         }
+        onDateValue={filterDateValue}
       />
       <GetTableHeader />
       {data.map((item) => (
