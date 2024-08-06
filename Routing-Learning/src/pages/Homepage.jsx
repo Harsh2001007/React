@@ -1,12 +1,20 @@
+import React from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function Homepage() {
+  const navigate = useNavigate();
+
+  function navigationHandler() {
+    navigate("/products");
+  }
   return (
-    <div>
-      <h2>This is primary homePage</h2>
+    <>
+      <div>My official homepage</div>
       <p>
-        click on this link -<Link to="/products">links</Link>
+        To navigate to product page <Link to="/products">click here</Link>
       </p>
-    </div>
+      <button onClick={navigationHandler}>navigate</button>
+    </>
   );
 }

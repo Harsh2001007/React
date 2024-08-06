@@ -18,7 +18,8 @@ function FilterBar({
 
   function handleDateChange(e) {
     setDateSelect(e.target.value);
-    onDateValue(e.target.value);
+    const isoDate = new Date(e.target.value).toISOString();
+    onDateValue(isoDate);
   }
 
   const memberObj = [

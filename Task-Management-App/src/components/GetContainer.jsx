@@ -22,8 +22,9 @@ export default function GetContainer() {
       try {
         const endpoint = filterState
           ? "http://15.207.240.41:8080/api/tasks"
-          : `http://15.207.240.41:8080/api/tasks?assignee=${selectedMember}`;
+          : `http://15.207.240.41:8080/api/tasks?assignee=${selectedMember}&date=${dateFromChild}`;
         const response = await axios.get(endpoint);
+        console.log(endpoint);
         // Ensure response data is correctly structured
         setData(response.data.data || []);
       } catch (error) {
@@ -76,18 +77,13 @@ export default function GetContainer() {
 
   console.log(selectedMember);
   console.log(DateFromChild);
+  console.log(typeof DateFromChild);
 
-  let isoDateStr = "";
-  if (DateFromChild) {
-    const dateObj = new Date(DateFromChild);
-    if (!isNaN(dateObj)) {
-      isoDateStr = dateObj.toISOString().split("T")[0];
-    } else {
-      console.error("Invalid date format");
-    }
+  function convertISOToDate(isoString) {
+    // Create a Date object from the ISO string
+    const date = new Date(isoString);
+    return date;
   }
-
-  console.log(isoDateStr);
 
   return (
     <div className="TicketMainContainer">
@@ -107,12 +103,12 @@ export default function GetContainer() {
       <GetTableHeader />
       {data.map((item) => (
         <TicketStrip
-          key={item.creationTime}
           assigneeName={item.assignee}
           status={item.status}
           createdDate={new Date(item.creationTime).toLocaleDateString()}
           ticketTitle={item.title}
           onEdit={() => handleEditClick(item)}
+          // ticketDate={new Date(item.creationTime)}
         />
       ))}
       <EditModal
