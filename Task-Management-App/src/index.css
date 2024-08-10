@@ -419,3 +419,7 @@ body {
   width: 40%;
   margin-top: 18px;
 }
+
+.notification-div {
+  border: 2px solid red;
+}

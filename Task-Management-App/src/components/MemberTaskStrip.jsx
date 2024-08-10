@@ -68,6 +68,11 @@ export default function MemberTaskStrip() {
         },
       }
     );
+    setMemberSelect("");
+    setStatusSelect("");
+    setTitle("");
+    setDescription("");
+    setComment("");
   };
   const today = new Date();
   const options = { year: "numeric", month: "long", day: "numeric" };
@@ -92,7 +97,7 @@ export default function MemberTaskStrip() {
               value={memberSelect}
             >
               <option value="" disabled selected>
-                Select Team Member
+                Member
               </option>
               {memberObj.map((option) => (
                 <option value={option.value}>{option.label}</option>
@@ -142,7 +147,6 @@ export default function MemberTaskStrip() {
             <div className="rightPannel">
               <ButtonComp btnText={"Submit"} method={handleSubmit} />
               <ResetButton btnText={"Clear"} resetMethod={handleReset} />
-              <p>{gdata}</p>
             </div>
           </div>
         </div>

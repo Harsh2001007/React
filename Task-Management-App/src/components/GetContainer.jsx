@@ -14,7 +14,6 @@ export default function GetContainer() {
   const [editData, setEditData] = useState(null);
   const [filterState, setFilterState] = useState(true);
   const [selectedMember, setSelectedMember] = useState("");
-  const [DateFromChild, setDateFromChild] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -22,7 +21,7 @@ export default function GetContainer() {
       try {
         const endpoint = filterState
           ? "http://15.207.240.41:8080/api/tasks"
-          : `http://15.207.240.41:8080/api/tasks?assignee=${selectedMember}&date=${dateFromChild}`;
+          : `http://15.207.240.41:8080/api/tasks?assignee=${selectedMember}`;
         const response = await axios.get(endpoint);
         console.log(endpoint);
         // Ensure response data is correctly structured
@@ -74,16 +73,6 @@ export default function GetContainer() {
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
-
-  console.log(selectedMember);
-  console.log(DateFromChild);
-  console.log(typeof DateFromChild);
-
-  function convertISOToDate(isoString) {
-    // Create a Date object from the ISO string
-    const date = new Date(isoString);
-    return date;
-  }
 
   return (
     <div className="TicketMainContainer">
