@@ -10,6 +10,7 @@ import EditEventPage from "./pages/EditEventPage";
 import NewEventPage from "./pages/NewEventPage";
 import MainNavigation from "./components/MainNavigation";
 import Root from "./pages/Root";
+import EventsRootLayout from "./pages/EventsRootLayout";
 
 const myRoutes = createBrowserRouter([
   {
@@ -17,28 +18,39 @@ const myRoutes = createBrowserRouter([
     element: <Root />,
     children: [
       {
-        path: "/",
+      index:true,
         element: <HomePage />,
       },
-      {
-        path: "/events",
+      {path: 'events', element: <EventsRootLayout />, children: [{
+        index:true,
         element: <EventsPage />,
+        loader: async() => {
+          const response = await fetch('http://localhost:8080/events');
+
+      if (!response.ok) {
+      } else {
+        const resData = await response.json();
+        return resData.events;
+      }
+        }
       },
       {
-        path: "/events/:event-id",
+        path: ":eventId",
         element: <EventDetailPage />,
       },
       {
-        path: "/events/new",
+        path: "new",
         element: <NewEventPage />,
       },
       {
-        path: "/events/:event-id/edit",
+        path: ":event-id/edit",
         element: <EditEventPage />,
-      },
+      },]},
+      
     ],
   },
 ]);
+
 
 function App() {
   return <RouterProvider router={myRoutes} />;
