@@ -1,4 +1,5 @@
 import Buttons from "./components/Buttons";
+import Contact from "./components/Contact";
 import Content from "./components/Content";
 import Experience from "./components/Experience";
 import Header from "./components/Header";
@@ -13,6 +14,7 @@ function App() {
         <Buttons />
         <Skills />
         <Experience />
+        <Contact />
       </div>
     </>
   );
