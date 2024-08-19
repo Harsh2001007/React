@@ -9,16 +9,17 @@ export default function Content() {
       </div>
       <div className="tagline-div">
         <p className="tagline">
-          I do code and make content{" "}
-          <span className="gradientText">about it!</span>
+          I do code and build mobile and web{" "}
+          <span className="gradientText"> apps!</span>
         </p>
       </div>
       <div className="desc-div">
         <p className="desc-line">
-          I am a seasoned full-stack software engineer with over 8 years of
-          professional experience, specializing in backend development. My
-          expertise lies in crafting robust and scalable SaaS-based
-          architectures on the Amazon AWS platform.
+          I am a seasoned frontend engineer with over 2 years of professional
+          experience, specializing in React.js and React Native. My expertise
+          lies in developing dynamic and user-friendly mobile and web
+          applications, with a strong focus on creating cool and engaging UI
+          designs.
         </p>
       </div>
     </div>

@@ -6,7 +6,7 @@ import { FaGithub } from "react-icons/fa";
 
 export default function Contact() {
   return (
-    <div className="contactMainContainer">
+    <div className="contactMainContainer" id="contact-id">
       <div className="subContactContainer">
         <div className="contactTitle">
           <p className="contactTitleText">Contact</p>
@@ -24,13 +24,16 @@ export default function Contact() {
           <p className="contactEmailText">hs5686584@gmail.com</p>
         </div>
         <div className="contactIcons">
-          <a href="#">
+          <a
+            href="https://www.linkedin.com/in/harsh-sachan-8222b5214/"
+            target="_blank"
+          >
             <CiLinkedin size={"30px"} color="white" />
           </a>
-          <a href="#">
+          <a href="https://x.com/noob_code007" target="_blank">
             <FaXTwitter size={"30px"} color="white" />
           </a>
-          <a href="#">
+          <a href="https://github.com/Harsh2001007" target="_blank">
             <FaGithub size={"30px"} color="white" />
           </a>
         </div>
