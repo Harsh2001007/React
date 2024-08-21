@@ -405,32 +405,3 @@ header {
 }
 
 /* media query code  */
-
-@media (max-width: 600px) {
-  header {
-    height: 60px;
-    width: 100%;
-    background-color: #1e1e1e;
-    display: flex;
-    align-items: center;
-    border: 2px solid yellow;
-  }
-
-  .header-left {
-    width: 40%;
-    border: 2px solid red;
-  }
-  .header-left h2 {
-    font-family: "Playwrite HR", cursive;
-    color: white;
-    margin-left: 20px;
-    font-size: 10px;
-  }
-  .header-right {
-    width: 40%;
-    display: flex;
-    flex-direction: row;
-    gap: 30px;
-    border: 2px solid crimson;
-  }
-}
