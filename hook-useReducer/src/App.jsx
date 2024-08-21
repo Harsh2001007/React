@@ -1,4 +1,5 @@
 import { useReducer, useState } from "react";
+import Todo from "./components/Todo";
 
 const initialState = 5;
 
@@ -26,6 +27,9 @@ function App() {
         <button onClick={() => dispatch({ type: "decrement" })}>
           decrease
         </button>
+      </div>
+      <div>
+        <Todo />
       </div>
     </>
   );
