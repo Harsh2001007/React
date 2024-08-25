@@ -9,6 +9,7 @@ export default function ChildB({ name }) {
   return (
     <div>
       <button onClick={() => ctxPer.setter("bye bye")}></button>
+      <button onClick={() => ctxPer.setter("sigma")}></button>
       child B {name} and i am a {ctx}. people just made me {ctxPer.per}
     </div>
   );
