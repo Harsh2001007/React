@@ -405,3 +405,13 @@ header {
 }
 
 /* media query code  */
+
+@media only screen and (max-width: 450px) {
+  .main-content-container {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+  }
+}
