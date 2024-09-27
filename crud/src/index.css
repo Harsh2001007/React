@@ -1,0 +1,89 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #2f2b2b;
+  color: white;
+  font-family: "Space Grotesk", sans-serif;
+  font-style: normal;
+}
+
+.app {
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 5px;
+  align-items: center;
+}
+
+.add-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+.info-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5px;
+}
+
+input[type="text"],
+button {
+  appearance: none;
+  outline: none;
+  border: 0px;
+  padding: 12px 20px;
+  margin: 8px 0px;
+  border-radius: 5px;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+table td,
+table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  max-width: 350px;
+  word-wrap: break-word;
+  text-align: left;
+  color: #fff;
+}
+
+table td {
+  font-size: 18px;
+}
+
+table tr:hover {
+  background-color: #3f3c3c;
+}
+
+tr th {
+  min-width: 100px;
+}
+
+table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  background-color: #04aa6d;
+  text-align: left;
+  font-weight: 600;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
