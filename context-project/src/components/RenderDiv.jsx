@@ -7,7 +7,7 @@ export default function RenderDiv() {
     <>
       <div className="render">{value.testParent}</div>
       <button onClick={() => value.setTestParent("chal nikal yaha se")}>
-        click me to revert
+        click me to revert the process
       </button>
     </>
   );
