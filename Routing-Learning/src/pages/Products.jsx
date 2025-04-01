@@ -10,7 +10,7 @@ const PRODUCTS = [
 export default function Products() {
   return (
     <>
-      <h1>The product page ...</h1>
+      <h1>This is product page ...</h1>
       <div>
         <ul>
           {PRODUCTS.map((item) => (
