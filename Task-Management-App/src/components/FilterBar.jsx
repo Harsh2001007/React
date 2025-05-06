@@ -25,7 +25,7 @@ function FilterBar({
   const memberObj = [
     { label: "Rishabh Pandey", value: "Rishabh Pandey" },
     { label: "Sandeep Singh", value: "Sandeep Singh" },
-    { label: "Shivam Mishra", value: "Shivam Mishra" },
+    { label: "Shivam Mishras", value: "Shivam Mishra" },
     { label: "Harsh Sachan", value: "Harsh Sachan" },
   ];
   return (
